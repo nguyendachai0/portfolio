@@ -13,16 +13,19 @@ class PageController extends Controller
 {
     public function home()
     {
-        return view('layouts.home');
+        $title = 'Home Page';
+        return view('layouts.home', ['title' => $title]);
     }
 
     public function about()
     {
-        return view('layouts.about');
+        $title = 'About';
+        return view('layouts.about', ['title' => $title]);
     }
 
     public function works()
     {
+        $title = 'Works';
         // Assuming you want to fetch all records from the "works" table
         $works = WorkModel::all();
         // Organize the works into arrays containing two records each
@@ -31,7 +34,7 @@ class PageController extends Controller
         $worksCount = $works->count();
 
 
-        return view('layouts.works', ['works' => $works, 'groupedWorks' => $groupedWorks, 'worksCount' => $worksCount]);
+        return view('layouts.works', ['works' => $works, 'groupedWorks' => $groupedWorks, 'worksCount' => $worksCount, 'title' => $title]);
     }
 
     public function contact()
